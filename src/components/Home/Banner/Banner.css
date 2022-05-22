@@ -2,5 +2,5 @@
 .banner-img{
     opacity: 0.6;
    
-    background-size: cover;
+    background-size: contain;
 }
