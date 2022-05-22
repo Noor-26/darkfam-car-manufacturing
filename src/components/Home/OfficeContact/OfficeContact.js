@@ -16,8 +16,8 @@ function OfficeContact() {
           <div className='flex '>
             <p className='text-2xl mr-1 mt-2'><GoLocation/></p>
             <div>
-            <p className='text-2xl font-bold'>350 Flatbush ave New York</p>
-            <p>350 Flatbush ave New York</p>
+            <p className='text-2xl font-bold'>350 Flatbush Ave Dhaka</p>
+            <p>NY 10018 Dhaka</p>
             </div>
           </div>
           <div className='flex '>
