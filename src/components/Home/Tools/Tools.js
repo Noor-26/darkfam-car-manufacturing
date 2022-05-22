@@ -10,7 +10,7 @@ function Tools() {
     
   return (
     <div>
-        <p>Tools</p>
+        <p className='text-5xl text-primary mb-5 mt-8'>Tools</p>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 px-10'>
         {
             tools.map(tool => <Toolscard tool={tool}/>)

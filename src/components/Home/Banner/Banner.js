@@ -9,7 +9,7 @@ function Banner() {
         <img src={bgImg} alt="a black car" className='absolute banner-img min-h-screen' />
     </div>
     <div>
-    <div class="hero min-h-screen bg-base-100 text-white">
+    <div class="hero min-h-screen  text-white">
   <div class="hero-content text-center">
     <div class="max-w-md">
       <h1 class="text-4xl font-bold">Best Car Tools For You</h1>

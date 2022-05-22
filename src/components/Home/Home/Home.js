@@ -1,6 +1,7 @@
 import React from 'react'
 import Banner from '../Banner/Banner'
 import BussnessSummary from '../BussnessSummary/BussnessSummary'
+import OfficeContact from '../OfficeContact/OfficeContact'
 import Tools from '../Tools/Tools'
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
     <Banner/>
     <Tools/>
     <BussnessSummary/>
+    <OfficeContact/>
     </div>
   )
 }
