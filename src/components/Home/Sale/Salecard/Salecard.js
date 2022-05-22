@@ -3,7 +3,7 @@ import './Salecard.css'
 function Salecard({sale}) {
     const {img,name,part,discount} = sale
   return (
-    <div class="card w-96 bg-base-100 shadow-xl image-full">
+    <div class="card max-w-lg bg-base-100 shadow-xl image-full">
   <figure><img src={img}alt="Shoes" className='w-96' /></figure>
   <div class="card-body text-left text-white">
     <h2 class="card-title text-3xl text-white">{name}</h2>

@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home/Home';
-import Navber from './components/Navber/Navber';
+import Navber from './components/Shared/Navber/Navber';
+import Footer from './components/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
     </Routes>
+    <Footer/>
     </div>
   );
 }
