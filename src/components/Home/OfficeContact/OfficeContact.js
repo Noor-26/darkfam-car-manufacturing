@@ -5,7 +5,7 @@ import {MdPhonePaused} from 'react-icons/md'
 
 function OfficeContact() {
   return (
-    <div class="hero max-h-screen pb-10 ">
+    <div class="hero max-h-screen mb-[30vh] lg:mb-10 ">
     <div class="hero-content flex-col lg:flex-row-reverse">
       <img src="https://i.ibb.co/Pc72PWP/Capture.png"class="w-xl " />
       <div className=' text-left'>

@@ -10,6 +10,7 @@ function Parthners() {
         <img src="https://i.ibb.co/k6R7sLB/logo-3.webp" alt="" />
         <img src="https://i.ibb.co/DKHGz80/logo-4.webp" alt="" />
         <img src="https://i.ibb.co/k17T9bY/logo-5.webp" alt="" />
+       
         </div>
         
     </div>

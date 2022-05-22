@@ -1,0 +1,7 @@
+.sale-btn{
+    border: 2px solid white;
+}
+.sale-btn:hover{
+    border: 2px solid #ea1b25;
+    background-color: #ea1b25;
+}

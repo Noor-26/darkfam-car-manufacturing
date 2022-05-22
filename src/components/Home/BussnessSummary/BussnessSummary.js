@@ -5,7 +5,7 @@ import { MdRateReview } from 'react-icons/md';
 
 function BussnessSummary() {
   return (
-    <div className='min-h-[100vh] lg:h-[70vh] flex items-center justify-center'>
+    <div className='min-h-[100vh] lg:h-[70vh] flex items-center my-6 lg:my-1 justify-center'>
   <div class="stats stats-vertical lg:stats-horizontal shadow ">
       
  
