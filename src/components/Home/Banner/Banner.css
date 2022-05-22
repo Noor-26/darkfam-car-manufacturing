@@ -1,8 +1,6 @@
-.banner{
-    height: 90vh;
-}
+
 .banner-img{
     opacity: 0.6;
-    height: 90vh;
+   
     background-size: cover;
 }

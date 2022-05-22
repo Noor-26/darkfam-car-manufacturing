@@ -4,9 +4,9 @@ import bgImg from '../../../images/banner.png'
 function Banner() {
     
   return (
-<div className='banner flex'>
+<div className=' min-h-screen flex'>
     <div>
-        <img src={bgImg} alt="a black car" className='absolute banner-img' />
+        <img src={bgImg} alt="a black car" className='absolute banner-img min-h-screen' />
     </div>
     <div>
     <div class="hero min-h-screen bg-base-100 text-white">
