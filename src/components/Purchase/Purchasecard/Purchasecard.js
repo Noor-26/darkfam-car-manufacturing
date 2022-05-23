@@ -9,8 +9,17 @@ function Purchasecard({purchaseItem}) {
     const [user] = useAuthState(auth)
     const { register, handleSubmit } = useForm();
     const [purchase,setpurchase] = useState(true)
-    const [orderValue,setOrders] = useState(minimum_quantity)
-  
+    const [orderValue,setOrdervalue] = useState(minimum_quantity || 0)
+   
+    
+    useEffect(() => {
+
+      if(minimum_quantity){
+        setOrdervalue(minimum_quantity) 
+      }
+
+}, [minimum_quantity])
+
 useEffect(() => {
  if(orderValue < avaliable_quantity || orderValue > minimum_quantity){
   setpurchase(true)
@@ -18,20 +27,38 @@ useEffect(() => {
 }, [orderValue])
 
   const onSubmit = (data) => {
-    const order = data.order_quantity
-    console.log(data)
+    const orderValue = data.order_quantity
+    const orderPrice = orderValue * price
+    const order = {
+      item_name:purchaseItem.name,
+      email:user.email,
+      name:user.displayName,
+      order_quantity:orderValue,
+      orderPrice:orderPrice
 
-    if(order < minimum_quantity  ){
+    }
+
+    if(orderValue < minimum_quantity  ){
        toast(`you can'order below ${minimum_quantity}`)
        setpurchase(false)
     }
-    else if(order > avaliable_quantity){
+    else if(orderValue > avaliable_quantity){
       toast(`you can't order higher than ${avaliable_quantity}`)
       setpurchase(false)
     }
+    else{
+      // sending order data to server
+      fetch('http://localhost:5000/order',{
+        method: 'POST',
+        headers:{
+            'content-type':'application/json', 
+        },
+        body: JSON.stringify(order)
+    }).then(res => res.json()).then(data => toast('success'))
+}
     
+
   };
-  
   return (
     <div>
            <form onSubmit={handleSubmit(onSubmit)} className="text-center">
@@ -40,7 +67,7 @@ useEffect(() => {
       <input type="email" className="input input-bordered w-full max-w-xs mt-5" {...register("email")} value={user.email} disabled />
       <input type="text" placeholder="Enter your Address" className="input input-bordered w-full max-w-xs mt-5" {...register("address")} />
       <input type="number" placeholder="Enter phone number" className="input input-bordered w-full max-w-xs mt-5"{...register("phone")}/>
-      <input type="number" placeholder="Order" className="input input-bordered w-full max-w-xs mt-5"{...register("order_quantity")} value={orderValue}  onChange={(e) => setOrders(e.target.value)}/>
+      <input type="number" placeholder="Order" className="input input-bordered w-full max-w-xs mt-5"{...register("order_quantity")} value={orderValue}  onChange={(e) => setOrdervalue(e.target.value)} />
       <br/>
       <input type="submit" value="Purchase" disabled={!purchase}  className='btn btn-primary text-white  max-w-xs my-5 ' />
     </form>
