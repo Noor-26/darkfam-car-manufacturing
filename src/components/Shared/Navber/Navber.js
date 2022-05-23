@@ -1,9 +1,14 @@
+import { signOut } from 'firebase/auth'
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
+import auth from '../../../firebase.init'
 
 function Navber() {
+  const [user] = useAuthState(auth)
+  // fixed top-0
   return (
-    <div class="navbar bg-white z-10  fixed top-0 ">
+    <div class="navbar bg-white z-10 ">
   <div class="navbar-start ">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -23,9 +28,14 @@ function Navber() {
   <div class="navbar-center hidden lg:flex font-bold">
     <ul class="menu menu-horizontal p-0">
       <li><Link to='/'>Home</Link></li>
-      <li><Link to='/login'>Login</Link></li>
       <li><Link to='/blogs'>Blogs</Link></li>
       <li><Link to='/portfolio'>My Portfollio</Link></li>
+     {user ? <>
+      <li><Link to='/dashboard'>Dashboard</Link></li> 
+      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
+     </>  :  
+     <li><Link to='/login'>Login</Link></li> 
+     }
     </ul>
   </div>
   </div>

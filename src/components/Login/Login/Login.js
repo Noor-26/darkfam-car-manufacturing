@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
@@ -9,17 +9,23 @@ import Loading from '../../Shared/Loading/Loading';
 function Login() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     
-   
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || '/'
+
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
+
+    if(user){
+        navigate(from,{replace:true})
+    }
     if ( loading ) {
         return <Loading />
     }
@@ -74,7 +80,7 @@ function Login() {
                       
                         <input type="submit" value="Login" className='btn btn-primary text-white w-full max-w-xs my-5' />
                     </form>
-                            <p className='font-bold'>Don't have a account?<Link to="/register" className='text-primary font-normal'> Create new account</Link> </p>
+                            <p className='font-bold'>Don't have a account?<Link to="/register" className='text-primary font-medium'> Sign Up</Link> </p>
                  
                 </div>
             </div>

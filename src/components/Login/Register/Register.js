@@ -4,6 +4,7 @@ import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 
 function Register() {
@@ -28,8 +29,8 @@ if ( loading ) {
   return <Loading />
 }
   return (
-    <div className='flex h-screen justify-center items-center border'>
-    <div className='card w-96 bg-base-100 shadow-xl p-4 '>
+    <div className='flex h-auto justify-center items-center border pt-16'>
+    <div className='card w-96 bg-base-100 shadow-xl p-4 my-10 '>
         <div className='card body p-4'>
             <p className='text-center font bold text-2xl'>Sign Up</p>
 
@@ -93,10 +94,11 @@ if ( loading ) {
                 {signError}
                 <input type="submit" value="Sign up" className='btn btn-primary text-white w-full max-w-xs my-5' />
             </form>
-                    <p className='font-bold'>Already a user?<Link to="/login" className='text-primary font-normal'> login here</Link> </p>
+                    <p className='font-bold'>Already a user?<Link to="/login" className='text-primary font-medium'> Login here</Link> </p>
             
            
         </div>
+       <SocialLogin/>
     </div>
     </div>
   )

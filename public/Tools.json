@@ -4,8 +4,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
 
         },
@@ -14,8 +14,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
 
         },
@@ -24,8 +24,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
 
         },
@@ -34,8 +34,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
 
         },
@@ -44,8 +44,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
 
         },
@@ -54,8 +54,8 @@
         "name":"Auto Clutch & Brake",
         "img":"https://htmldemo.net/tromic/tromic/assets/images/product/large-size/2-1-618x578.jpg",
         "description":"Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-        "minimum_quantity": 100,
-        "avaliable_quantity":100,
+        "minimum_quantity": 10,
+        "avaliable_quantity":1000,
         "price":440
         }
     ]
