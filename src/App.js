@@ -15,6 +15,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Myorder from './components/Dashboard/Myorder';
 import Addreview from './components/Dashboard/Addreview';
 import Myprofile from './components/Dashboard/Myprofile';
+import UpdateProfile from './components/Dashboard/UpdateProfile';
   
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route index element={<Myorder/>} />
        <Route path="addreview" element={<Addreview/>} />
        <Route path="myprofile" element={<Myprofile/>} />
+       <Route path="updateprofile" element={<UpdateProfile/>} />
       </Route>
        
     </Routes>
