@@ -20,7 +20,7 @@ function Myorder() {
     <div>
    
     <div>
-        <p className='text-2xl my-3'> Manage doctors : </p>
+        <p className='text-2xl my-3'> Manage doctors  </p>
 
         <div class="overflow-x-auto">
   <table class="table w-full">
