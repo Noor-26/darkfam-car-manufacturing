@@ -18,6 +18,11 @@ function Dashboard() {
         <li><Link to='/dashboard'>My Order</Link></li>
         <li><Link to='/dashboard/addreview'>Add a review</Link></li>
         <li><Link to='/dashboard/myprofile'>My profile</Link></li>
+        <li><Link to='/dashboard/addproduct'>Add a product</Link></li>
+        <li><Link to='/dashboard/manageallorder'>Manage all order</Link></li>
+        <li><Link to='/dashboard/makeadmin'>Make admin</Link></li>
+        <li><Link to='/dashboard/manageproduct'>Manage products</Link></li>
+
         
       </ul>
     

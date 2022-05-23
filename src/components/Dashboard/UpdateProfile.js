@@ -31,6 +31,7 @@ function UpdateProfile() {
   }).then(res => res.json()).then(data => {navigate('/dashboard/myprofile')})
  
   }
+  
   if(loading){
     return<Loading/>
 }

@@ -16,6 +16,10 @@ import Myorder from './components/Dashboard/Myorder';
 import Addreview from './components/Dashboard/Addreview';
 import Myprofile from './components/Dashboard/Myprofile';
 import UpdateProfile from './components/Dashboard/UpdateProfile';
+import Manageallproducts from './components/Dashboard/Manageallproducts';
+import Addproduct from './components/Dashboard/Addproduct';
+import Manageorders from './components/Dashboard/Manageorders';
+import Makeadmin from './components/Dashboard/Makeadmin';
   
 
 function App() {
@@ -36,6 +40,10 @@ function App() {
        <Route path="addreview" element={<Addreview/>} />
        <Route path="myprofile" element={<Myprofile/>} />
        <Route path="updateprofile" element={<UpdateProfile/>} />
+       <Route path="manageproduct" element={<Manageallproducts/>} />
+       <Route path="addproduct" element={<Addproduct/>} />
+       <Route path="manageallorder" element={<Manageorders/>} />
+       <Route path="makeadmin" element={<Makeadmin/>} />
       </Route>
        
     </Routes>

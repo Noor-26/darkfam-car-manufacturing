@@ -12,7 +12,7 @@ function Myorder() {
   const [orders,setorder] = useState([])
  
   useEffect(() => {
-    fetch('http://localhost:5000/order?email=nk269698@gmail.com')
+    fetch(`http://localhost:5000/order?email=${user.email}`)
     .then(res => res.json()).then(data => setorder(data))
   }, [])
   

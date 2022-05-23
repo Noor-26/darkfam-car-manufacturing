@@ -5,7 +5,7 @@ function Toolscard({tool}) {
     const {name,img,description,minimum_quantity,avaliable_quantity,price,_id} = tool 
   return (
     <div class="card min-w-md bg-base-100 shadow-xl">
-  <figure><img src={img}alt="Shoes" /></figure>
+  <figure><img src={img}alt="Shoes" className='w-full' /></figure>
   <div class="card-body text-left">
     <h2 class="card-title">{name}</h2>
     <p>Minimum : {minimum_quantity}</p>
