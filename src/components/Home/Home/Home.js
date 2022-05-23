@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner'
 import BussnessSummary from '../BussnessSummary/BussnessSummary'
 import OfficeContact from '../OfficeContact/OfficeContact'
 import Parthners from '../Pathners/Parthners'
+import Reviews from '../Review/Reviews'
 import Sale from '../Sale/Sale'
 import Tools from '../Tools/Tools'
 
@@ -11,6 +12,7 @@ function Home() {
     <div>
     <Banner/>
     <Tools/>
+    <Reviews/>
     <BussnessSummary/>
     {/* extra parts */}
     <Sale/>

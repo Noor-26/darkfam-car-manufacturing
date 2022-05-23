@@ -46,10 +46,7 @@ function Addreview() {
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
-  <label class="label">
-    <span class="label-text-alt">Alt label</span>
-    <span class="label-text-alt">Alt label</span>
-  </label>
+  
 </div>
       <textarea type="text" placeholder="Enter your review" cols="30" rows="10" className="input input-bordered w-80 mt-5 h-24" {...register("review")} />
    
