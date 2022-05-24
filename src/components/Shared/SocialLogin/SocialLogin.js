@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Loading from '../Loading/Loading';
 import {  useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import {  useNavigate } from 'react-router-dom';
+import {  useNavigate, useLocation } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './SocialLogin.css'
+import { toast } from 'react-toastify';
+import useToken from '../useToken/useToken';
 
 function SocialLogin() {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     const navigate = useNavigate()
-    let signError;
-    if (googleError ) {
-        signError = <p className='text-red-500 mt-2'>{googleError.message}</p>
-    }
-    if(googleUser){
-        navigate('/')
+    const location = useLocation()
+    const [token] = useToken(googleUser) 
+    let from = location.state?.from?.pathname || '/'
+   
+    useEffect(() => {
+        if( googleError){
+            toast.error(googleError.message)
+        }
+    }, [googleError])
+    if(token){
+        navigate(from,{replace:true})
     }
     if(googleLoading){
         return <Loading/>
@@ -26,7 +33,6 @@ function SocialLogin() {
                     className="btn social-btn"
                     onClick={() => signInWithGoogle()}
                 >Continue with google</button>
-                {signError}
     </div>
   )
 }

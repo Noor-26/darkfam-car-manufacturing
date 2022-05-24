@@ -14,7 +14,14 @@ function Myorder() {
  
   const [open, setOpen] = useState(false)
    
-  const {data:orders,isLoading,refetch} = useQuery('order_data',() => fetch(`http://localhost:5000/order?email=${email}`).then(res => res.json()))
+  const {data:orders,isLoading,refetch} = useQuery('order_data',() => fetch(`http://localhost:5000/order?email=${email}`,{
+    method: 'GET',
+    headers:{
+        'content-type':'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    
+    },
+}).then(res => res.json()))
 
   const removeOrder = () => {
     fetch(`http://localhost:5000/order/${orderId}`,

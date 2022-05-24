@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import { setUserId } from 'firebase/analytics';
+import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -9,14 +10,17 @@ import './MyProfile.css'
 
 function Myprofile() {
   const [user] = useAuthState(auth)
+  const [profileUser, setUser] = useState([])
+ const {displayName,email,photoURL} = user
   
-  const {data,isLoading,refetch} = useQuery('Profile_data',() => fetch(`http://localhost:5000/user?email=${user.email}`).then(res => res.json()))
+  useEffect(() => {
+    
+    fetch(`http://localhost:5000/user?email=${email}`)
+    .then(res => res.json())
+    .then(data => setUser(data))
+  console.log(user)
+  }, [user])
   
-
-
-  if(isLoading){ 
-    return <Loading/>
-  }
   
   return (
     <div className='flex flex-col justify-center mx-auto'>
@@ -27,17 +31,17 @@ function Myprofile() {
   <div class="profile_card-details ">
   <div class="avatar">
   <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
-    <img src={data?.img ? data.img : "https://i.ibb.co/GT8y63Q/demo-icon.webp"} />
+    <img src={photoURL ? photoURL : "https://i.ibb.co/GT8y63Q/demo-icon.webp"} />
   </div>
 </div>
-    <p class="profile_text-title">{data?.name}</p>
+    <p class="profile_text-title">{displayName}</p>
     <div className='text-left'>
 
-    <p class="profile_text-body">Education: {data.education ?data.education :'Update your education'  }</p>
-    <p class="profile_text-body">Phone : {data.number ? data.number : '########'}</p>
-    <p class="profile_text-body">Location : {data.location ? data.location : 'Update your location'} </p>
+    <p class="profile_text-body">Education: {profileUser.education ? profileUser.education :'Update your education'  }</p>
+    <p class="profile_text-body">Phone : {profileUser.number ? profileUser.number : '########'}</p>
+    <p class="profile_text-body">Location : {profileUser.location ? profileUser.location : 'Update your location'} </p>
     </div>
-    <p class="profile_text-body "><a href={data.linkdin ? data.linkdin : 'update your linkdin'} target="_blank" className="text-primary">Visit Linkdin</a></p>
+    <p class="profile_text-body "><a href={profileUser.linkdin ? profileUser.linkdin : 'update your linkdin'} target="_blank" className="text-primary">Visit Linkdin</a></p>
   </div>
   <button class="profile_card-button"><Link to='/dashboard/updateprofile'>Update Your profile</Link></button>
 </div> 

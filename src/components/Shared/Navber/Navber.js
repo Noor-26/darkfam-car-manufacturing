@@ -32,6 +32,7 @@ function Navber() {
       <li><Link to='/portfolio'>My Portfollio</Link></li>
      {user ? <>
       <li><Link to='/dashboard'>Dashboard</Link></li> 
+      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user.displayName}</button>
       <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
      </>  :  
      <li><Link to='/login'>Login</Link></li> 

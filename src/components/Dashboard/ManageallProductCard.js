@@ -1,5 +1,4 @@
 import React from 'react'
-import RemoveProduct from './Deletes/RemoveProduct'
 
 function ManageallProductCard({product,index,setOpen,setProductId}) {
     const {_id} = product

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import useToken from '../../Shared/useToken/useToken';
+import { toast } from 'react-toastify';
 
 
 function Register() {
@@ -16,16 +18,30 @@ function Register() {
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [token] = useToken(user)
+  let from = location.state?.from?.pathname || '/'
 
+  useEffect(() => {
+    if(error){
+        toast.error(error.message)
+    }
+}, [error])
+
+  if(token){
+      navigate(from,{replace:true})
+  }
   let signError;
   if (error || updateError) {
     signError = <p className='text-red-500 mt-2'>{error.message}</p>
 }
+
 const onSubmit = async data => {
   await createUserWithEmailAndPassword(data.email, data.password)
   await updateProfile({ displayName: data.name })
 };
-if ( loading ) {
+if ( loading || updating ) {
   return <Loading />
 }
   return (

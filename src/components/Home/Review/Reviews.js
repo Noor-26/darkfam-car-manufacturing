@@ -15,7 +15,7 @@ function Reviews() {
       <p className='text-3xl mt-10'>Reviews</p>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 mx-auto justify-items-center mt-5'>
       {
-        reviews.map(review => <Reviewcard reviews={review} />)
+        reviews?.map(review => <Reviewcard reviews={review} />)
       }
       </div>
         </div>

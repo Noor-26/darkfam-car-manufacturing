@@ -1,35 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import useToken from '../../Shared/useToken/useToken';
+import { toast } from "react-toastify";
 
 
 function Login() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     
     const [
         signInWithEmailAndPassword,
         user,
         loading,
-        error,
+        error
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate()
     const location = useLocation()
-    let from = location.state?.from?.pathname || '/'
-
+    
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
+    const [token] = useToken(user)
+    let from = location.state?.from?.pathname || '/'
+useEffect(() => {
+    if(error){
+        toast.error(error.message)
+    }
+}, [error])
 
-    if(user){
+    if(token){
         navigate(from,{replace:true})
     }
     if ( loading ) {
         return <Loading />
     }
+  
   return (
     <div className='flex h-screen justify-center items-center border'>
             <div className='card w-96 bg-base-100 shadow-xl p-4'>
