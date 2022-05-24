@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 
 function Login() {
@@ -83,6 +84,7 @@ function Login() {
                             <p className='font-bold'>Don't have a account?<Link to="/register" className='text-primary font-medium'> Sign Up</Link> </p>
                  
                 </div>
+                <SocialLogin/>
             </div>
         </div>
   )

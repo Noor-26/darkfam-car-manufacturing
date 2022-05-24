@@ -1,15 +1,29 @@
-import React from 'react'
+import  { useState } from 'react'
 import { useQuery } from 'react-query'
 import Loading from '../Shared/Loading/Loading';
+import RemoveProduct from './Deletes/RemoveProduct';
+import ManageallProductCard from './ManageallProductCard';
 
 function Manageallproducts() {
-  
-  const {data,isLoading} = useQuery('product_data',() => fetch('http://localhost:5000/items').then(res => res.json()))
+  const [open, setOpen] = useState(false)
+  const [productId, setProductId] = useState("")
+  const {data,isLoading,refetch} = useQuery('product_data',() => fetch('http://localhost:5000/items').then(res => res.json()))
 
   if(isLoading){ 
-    return <Loading/>
+    return <Loading/>   
   }
- 
+
+  const removeProduct = () => {
+    fetch(`http://localhost:5000/items/${productId}`,
+          {
+              method:'DELETE',
+          })
+          .then(res => res.json())
+          .then(data => {
+              refetch()
+          })
+  setOpen(false)
+   }
   return (
     <div>
       <p className="text-3xl my-5">Manage all products</p>
@@ -28,21 +42,13 @@ function Manageallproducts() {
     </thead>
     <tbody>
      {
-         data.map((product,index) => <tr>
-         <th>{index+1}</th>
-         <td><div class="w-16 rounded">
-    <img src={product.img}alt="Tailwind-CSS-Avatar-component" />
-  </div></td>
-  <td>{product.name}</td>
-  <td>${product.price}</td>
-  <td>{product.avaliable_quantity}</td>
-         <td><button class="btn btn-xs btn-accent ">remove user</button></td>
-       </tr>)
+         data.map((product,index) => <ManageallProductCard product={product} index={index} setOpen={setOpen}  setProductId={setProductId}/>)
      }
      
     </tbody>
   </table>
 </div>
+{open && <RemoveProduct removeProduct={removeProduct} refetch={refetch}/>}
     </div>
   )
 }
