@@ -48,7 +48,7 @@ function Manageallproducts() {
     </tbody>
   </table>
 </div>
-{open && <RemoveProduct removeProduct={removeProduct} refetch={refetch}/>}
+{open && <RemoveProduct removeProduct={removeProduct}/> }
     </div>
   )
 }
