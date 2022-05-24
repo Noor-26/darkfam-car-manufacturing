@@ -7,7 +7,6 @@ import auth from '../../firebase.init';
 function Addproduct() {
   const [user,loading] = useAuthState(auth)
   const { register, handleSubmit,reset  } = useForm();
-  const navigate = useNavigate()
   
   const onSubmit = (data) => {
      
