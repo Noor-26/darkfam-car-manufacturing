@@ -25,7 +25,7 @@ function Purchase() {
 
     <div class="hero min-h-screen ">
   <div class="hero-content flex-col gap-5 lg:flex-row">
-    <img src={img} class="max-w-lg rounded-lg " />
+    <img src={img} class="min-w-lg lg:max-w-lg rounded-lg " />
     <div className='text-left pl-14 h-auto mt-10'>
       <h1 class="text-3xl lg:text-5xl font-bold">{name}</h1>
       <p className='pt-2'>Minimum Quantity : {minimum_quantity}</p>
