@@ -21,7 +21,7 @@ function Purchasecard({purchaseItem}) {
 }, [minimum_quantity])
 
 useEffect(() => {
- if(orderValue < avaliable_quantity || orderValue > minimum_quantity){
+ if(orderValue < avaliable_quantity || orderValue >= minimum_quantity ){
   setpurchase(true)
  }
 }, [orderValue])
@@ -38,7 +38,7 @@ useEffect(() => {
 
     }
 
-    if(orderValue < minimum_quantity  ){
+    if(orderValue < minimum_quantity   ){
        toast(`you can'order below ${minimum_quantity}`)
        setpurchase(false)
     }
@@ -52,6 +52,8 @@ useEffect(() => {
         method: 'POST',
         headers:{
             'content-type':'application/json', 
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+
         },
         body: JSON.stringify(order)
     }).then(res => res.json()).then(data => toast('success'))

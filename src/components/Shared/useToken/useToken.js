@@ -4,12 +4,19 @@ function useToken(user) {
     const [token, setToken] = useState('')
     useEffect(() => {
       const email = user?.user?.email
-      const currentUser = {email:email}
+      const displayName = user?.user?.displayName
+      const currentUser = {
+          email:email,
+          name:displayName
+        }
         if(email){
+            localStorage.removeItem('accessToken')
             fetch(`http://localhost:5000/users/${email}`,{
                 method:'PUT',
                 headers:{
-                    'content-type': "application/json"
+                    'content-type': "application/json",
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+
                 },
                 body:JSON.stringify(currentUser)
             })

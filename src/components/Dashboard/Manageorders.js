@@ -1,9 +1,19 @@
 import React from 'react'
 import { useQuery } from 'react-query'
+import Loading from '../Shared/Loading/Loading'
 
 function Manageorders() {
-  const {data,isLoading} = useQuery('order_data',() => fetch('http://localhost:5000/orders').then(res => res.json()))
- 
+  const {data,isLoading} = useQuery('order_data',() => fetch('http://localhost:5000/orders',{
+    method: 'GET',
+        headers:{
+            'content-type':'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        
+        },
+  }).then(res => res.json()))
+ if(isLoading){
+return <Loading/>
+ }
   return (
     <div>
       <p className='text-3xl my-5'>manage orders</p>

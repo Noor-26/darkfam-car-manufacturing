@@ -14,8 +14,15 @@ function Myprofile() {
  const {displayName,email,photoURL} = user
   
   useEffect(() => {
-    
-    fetch(`http://localhost:5000/user?email=${email}`)
+    console.log(user)
+    fetch(`http://localhost:5000/user?email=${email}`,{
+      method: 'GET',
+        headers:{
+            'content-type':'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        
+        },
+    })
     .then(res => res.json())
     .then(data => setUser(data))
   console.log(user)
@@ -31,7 +38,7 @@ function Myprofile() {
   <div class="profile_card-details ">
   <div class="avatar">
   <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto">
-    <img src={photoURL ? photoURL : "https://i.ibb.co/GT8y63Q/demo-icon.webp"} />
+    <img src={photoURL ? photoURL : "https://i.ibb.co/GT8y63Q/demo-icon.webp"} alt="profile photo"/>
   </div>
 </div>
     <p class="profile_text-title">{displayName}</p>

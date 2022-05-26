@@ -20,6 +20,8 @@ function Addreview() {
       method: 'POST',
       headers:{
           'content-type':'application/json', 
+          method: 'GET',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(review)
   }).then(res => res.json()).then(data => toast.success('Thnx for the review review'))

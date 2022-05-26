@@ -17,6 +17,11 @@ function Manageallproducts() {
     fetch(`http://localhost:5000/items/${productId}`,
           {
               method:'DELETE',
+        headers:{
+            'content-type':'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        
+        },
           })
           .then(res => res.json())
           .then(data => {

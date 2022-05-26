@@ -20,6 +20,9 @@ import Manageallproducts from './components/Dashboard/Manageallproducts';
 import Addproduct from './components/Dashboard/Addproduct';
 import Manageorders from './components/Dashboard/Manageorders';
 import Makeadmin from './components/Dashboard/Makeadmin';
+import Notfound from './components/Notfound/Notfound';
+import Payment from './components/Dashboard/Payment';
+import Portfollio from './components/Portfollio/Portfollio';
   
 
 function App() {
@@ -30,22 +33,26 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/blog' element={<Blog/>}/>
+      <Route path='/portfolio' element={<Portfollio/>}/>
       <Route path='/purchase/:id' element={<Requireauth>
           <Purchase/>
       </Requireauth>}/>
       <Route path="/dashboard" element={<Requireauth>
       <Dashboard/>
      </Requireauth>}>
-      <Route index element={<Myorder/>} />
+      <Route index element={<Myprofile/>} />
        <Route path="addreview" element={<Addreview/>} />
-       <Route path="myprofile" element={<Myprofile/>} />
+       <Route path="myorder" element={<Myorder/>} />
+       <Route path="payment/:_id" element={<Payment/>} />
        <Route path="updateprofile" element={<UpdateProfile/>} />
        <Route path="manageproduct" element={<Manageallproducts/>} />
        <Route path="addproduct" element={<Addproduct/>} />
        <Route path="manageallorder" element={<Manageorders/>} />
-       <Route path="makeadmin" element={<Makeadmin/>} />
+      <Route path="makeadmin" element={<Makeadmin/>} />
       </Route>
        
+      <Route path="*" element={<Notfound/>} />
     </Routes>
     <Footer/>
     

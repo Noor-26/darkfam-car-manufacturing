@@ -5,40 +5,46 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import OrderCard from './OrderCard';
 import Loading from '../Shared/Loading/Loading';
 import RemoveOrder from './RemoveOrder';
+import { useNavigate } from 'react-router-dom';
 
 function Myorder() {
   const [user] = useAuthState(auth)
   const {email} = user
   const [orderId,setOrderId] = useState('')
-  // const [orders,setorder] = useState([])
+  const navigate = useNavigate()
+  const [orders,setorder] = useState([])
  
   const [open, setOpen] = useState(false)
-   
-  const {data:orders,isLoading,refetch} = useQuery('order_data',() => fetch(`http://localhost:5000/order?email=${email}`,{
+   useEffect(() => {
+    fetch(`http://localhost:5000/order?email=${email}`,{
     method: 'GET',
     headers:{
         'content-type':'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
     
     },
-}).then(res => res.json()))
+}).then(res =>  res.json() ).then(data=>setorder(data))
+   }, [])
+   
 
   const removeOrder = () => {
     fetch(`http://localhost:5000/order/${orderId}`,
           {
               method:'DELETE',
+              headers:{
+                  'content-type':'application/json',
+                  'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+              },
           })
           .then(res => res.json())
           .then(data => {
-              refetch()
+           
           })
   setOpen(false)
    }
-   if(isLoading){
-     return <Loading/>
-   }
+   
   return (
-    <div>
+    <div> 
    
     <div>
         <p className='text-2xl my-3'> Manage Orders  </p>
@@ -52,6 +58,7 @@ function Myorder() {
         <th>Order name</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Payment</th>
         <th>Action</th>
       </tr>
     </thead>

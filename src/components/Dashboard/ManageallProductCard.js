@@ -15,7 +15,7 @@ function ManageallProductCard({product,index,setOpen,setProductId}) {
   <td>{product.name}</td>
   <td>${product.price}</td>
   <td>{product.avaliable_quantity}</td>
-         <td><label for="manage_items" class="btn  btn-xs btn-primary modal-button" onClick={sendId}>Remove</label></td>
+         <td><label for="manage_items" class="btn  btn-xs btn-primary modal-button" onClick={sendId} >Remove</label></td>
 
 
        </tr>

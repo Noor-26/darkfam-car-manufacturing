@@ -5,7 +5,14 @@ import MakeAdminCard from './MakeAdminCard';
 
 function Makeadmin() {
 
-   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('http://localhost:5000/users').then(res => res.json()))
+   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('http://localhost:5000/users',{
+    method: 'GET',
+    headers:{
+        'content-type':'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    
+    },
+   }).then(res => res.json()))
   
    useEffect(() => {
      refetch()

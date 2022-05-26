@@ -17,9 +17,15 @@ function Navber() {
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
     
       <li><Link to='/'>Home</Link></li>
-      <li><Link to='/login'>Login</Link></li>
-      <li><Link to='/blogs'>Blogs</Link></li>
-      <li><Link to='/portfolio'>My Portfollio</Link></li>
+      <li><Link to='/blog'>Blogs</Link></li>
+      <li><Link to='/portfolio'>My Portfolio</Link></li>
+     {user ? <>
+      <li><Link to='/dashboard'>Dashboard</Link></li> 
+      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
+      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
+     </>  :  
+     <li><Link to='/login'>Login</Link></li> 
+     }
       </ul>
     </div>
     <a class="btn btn-ghost normal-case text-xl">Darkfam-car-manufacturer</a>
@@ -28,11 +34,11 @@ function Navber() {
   <div class="navbar-center hidden lg:flex font-bold">
     <ul class="menu menu-horizontal p-0">
       <li><Link to='/'>Home</Link></li>
-      <li><Link to='/blogs'>Blogs</Link></li>
-      <li><Link to='/portfolio'>My Portfollio</Link></li>
+      <li><Link to='/blog'>Blogs</Link></li>
+      <li><Link to='/portfolio'>My Portfolio</Link></li>
      {user ? <>
       <li><Link to='/dashboard'>Dashboard</Link></li> 
-      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user.displayName}</button>
+      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
       <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
      </>  :  
      <li><Link to='/login'>Login</Link></li> 

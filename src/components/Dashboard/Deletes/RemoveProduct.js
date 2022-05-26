@@ -8,9 +8,9 @@ function RemoveProduct({removeProduct}) {
 <div class="modal">
   <div class="modal-box relative">
     <label for="manage_items" class="btn btn-sm btn-circle absolute right-2 top-2 btn-primary">✕</label>
-    <h3 class="text-lg font-bold">Congratulations random Interner user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-    <button onClick={removeProduct}>Delete product</button>
+    <h3 class="text-lg font-bold">Want to remove the product?</h3>
+    <p class="py-4">Note: the removed product will be deleted from everywhere</p>
+    <button onClick={removeProduct} className="btn btn-primary">Delete product</button>
   </div>
 </div>
     </div>
