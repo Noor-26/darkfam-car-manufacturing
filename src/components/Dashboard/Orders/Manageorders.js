@@ -8,9 +8,9 @@ function Manageorders() {
         headers:{
             'content-type':'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        
         },
   }).then(res => res.json()))
+
  if(isLoading){
 return <Loading/>
  }
@@ -22,7 +22,6 @@ return <Loading/>
     headers:{
       'content-type':'application/json',
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-  
   },
    }).then(res=>res.json()).then(data => refetch() )
   }

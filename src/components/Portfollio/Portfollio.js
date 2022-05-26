@@ -8,7 +8,7 @@ function Portfollio() {
    <div class="portfolio_card w-72 ">
    <div class="avatar mt-5">
   <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 mx-auto ">
-    <img src="https://lh3.googleusercontent.com/a-/AOh14GgNN4hRVEQPFgaMDNuQFvaC61zbLxpgeNARMMxTXg=s96-c"alt="profile photo"/>
+    <img src="https://lh3.googleusercontent.com/a-/AOh14GgNN4hRVEQPFgaMDNuQFvaC61zbLxpgeNARMMxTXg=s96-c" alt="profile photo"/>
   </div>
 </div>
     <div class="category">Mahtab khan noor </div>

@@ -4,13 +4,11 @@ import { toast } from 'react-toastify';
 function MakeAdminCard({person,index,refetch}) {
     const {name,email,role} = person
     const makeAdmin = () => {
-        fetch(`https://fast-springs-91080.herokuapp.com/user/admin/${email}`,
-        {
+        fetch(`https://fast-springs-91080.herokuapp.com/user/admin/${email}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            
             },
         })
         .then(res => {
@@ -28,7 +26,7 @@ function MakeAdminCard({person,index,refetch}) {
          <th>{index+1}</th>
   <td>{name}</td>
   <td>{email}</td>
-         <td>{role !== 'admin' && <button class="btn btn-xs btn-primary" onClick={makeAdmin}>Make admin</button>}</td>
+         <td>{role !== 'admin'  && <button class="btn btn-xs btn-primary" onClick={makeAdmin}>Make admin</button>}</td>
        </tr>
   )
 }

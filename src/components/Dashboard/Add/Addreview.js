@@ -5,11 +5,10 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 function Addreview() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit ,reset} = useForm();
   const [user] = useAuthState(auth)
 
   const onSubmit = (data) => {
-    console.log(data)
     const review = {
       name:user.displayName,
       email:user.email,
@@ -24,8 +23,9 @@ function Addreview() {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(review)
-  }).then(res => res.json()).then(data => toast.success('Thnx for the review'))
- 
+  }).then(res => res.json()).then(data =>{
+    reset()
+    toast.success('Thnx for the review')})
   }
 
   return (
@@ -53,7 +53,7 @@ function Addreview() {
       <textarea type="text" placeholder="Enter your review" cols="30" rows="10" className="input input-bordered w-80 mt-5 h-24" {...register("review")} />
    
       <br/>
-      <input type="submit" value="Purchase"   className='btn btn-primary text-white  max-w-xs my-5 ' />
+      <input type="submit" value="Add review"   className='btn btn-primary text-white  max-w-xs my-5 ' />
     </form>
 
     </div>

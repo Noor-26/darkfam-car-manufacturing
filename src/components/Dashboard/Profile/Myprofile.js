@@ -1,21 +1,16 @@
-import { setUserId } from 'firebase/analytics';
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
-import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import './MyProfile.css'
-import UpdateProfile from './UpdateProfile';
 
 function Myprofile() {
-  const [user] = useAuthState(auth)
+  const [user,loading] = useAuthState(auth)
   const {displayName,email,photoURL} = user
   const [profileUser, setProfileUser] = useState([])
   
   useEffect(() => {
-    console.log(user)
     fetch(`https://fast-springs-91080.herokuapp.com/user?email=${email}`,{
       method: 'GET',
         headers:{
@@ -26,9 +21,10 @@ function Myprofile() {
     })
     .then(res => res.json())
     .then(data => setProfileUser(data))
-  console.log(user)
-  }, [user])
-  
+  }, [user,profileUser])
+  if(loading){
+    return <Loading/>
+  }
   
   return (
     <div className='flex flex-col justify-center mx-auto'>

@@ -9,12 +9,10 @@ function Manageallproducts() {
   const [open, setOpen] = useState(false)
   const [productId, setProductId] = useState("")
   const {data,isLoading,refetch} = useQuery('product_data',() => fetch('https://fast-springs-91080.herokuapp.com/items',{
-    
       method:'GET',
 headers:{
     'content-type':'application/json',
     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-
 },
   }).then(res => res.json()))
 
@@ -29,13 +27,12 @@ headers:{
         headers:{
             'content-type':'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        
         },
           })
           .then(res => res.json())
           .then(data => {
-            toast.success('removed product done')
-              refetch()
+            refetch()
+            toast.success('removing the product done')
           })
   setOpen(false)
    }

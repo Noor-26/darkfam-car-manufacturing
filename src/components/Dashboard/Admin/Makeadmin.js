@@ -25,7 +25,6 @@ function Makeadmin() {
   return (
     <div>
       <p className="text-3xl my-5">Make Admin</p>
-
       <div class="overflow-x-auto">
   <table class="table w-full">
   

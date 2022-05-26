@@ -60,9 +60,7 @@ useEffect(() => {
       toast.success('Your purchase is successfull')
     reset()
     })
-
 }
-    
   };
   return (
     <div>

@@ -6,10 +6,10 @@ import Reviewcard from './Reviewcard/Reviewcard';
 function Reviews() {
   const {data:reviews,isLoading} = useQuery('review',() => fetch('https://fast-springs-91080.herokuapp.com/review').then(res => res.json()))
 
-  
     if(isLoading){
       return <Loading/>
     }
+
   return (
     <div>
       <p className='text-3xl mt-10'>Reviews</p>

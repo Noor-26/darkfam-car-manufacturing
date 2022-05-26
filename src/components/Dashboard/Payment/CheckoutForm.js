@@ -1,11 +1,9 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import Loading from '../../Shared/Loading/Loading';
 
 function CheckoutForm({payItem}) {
     const [clientSecret, setClientSecret] = useState("");
-    const [loading, setLoading] = useState(false);
     const {orderPrice,email,name,_id} = payItem
   useEffect(() => {
 
@@ -32,7 +30,6 @@ function CheckoutForm({payItem}) {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        setLoading(true)
         if (!stripe || !elements) {
             return;
           }
@@ -41,7 +38,7 @@ function CheckoutForm({payItem}) {
     if (card == null) {
         return;
       }
-      const {error, paymentMethod} = await stripe.createPaymentMethod({
+      const {error} = await stripe.createPaymentMethod({
         type: 'card',
         card,
       });
@@ -82,18 +79,11 @@ function CheckoutForm({payItem}) {
             
           },
           body:JSON.stringify(payment)
-        }).then(res=>res.json()).then(data => {
-          setLoading(false)
-          event.reset()
-          toast.success('payment successfull')
-
-        }
+        }).then(res=>res.json()).then(data => toast.success('payment successfull')
         )
       }
     }
-    if(loading){
-      return <Loading/>
-    }
+ 
   return (
     <form onSubmit={handleSubmit}>
     <CardElement

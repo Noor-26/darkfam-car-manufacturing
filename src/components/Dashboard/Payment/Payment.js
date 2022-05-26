@@ -13,7 +13,6 @@ function Payment() {
             headers:{
                 'content-type':'application/json',
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            
             },
     }).then(res=>res.json()).then(data => setpayItem(data))
     }, [])
@@ -23,8 +22,8 @@ function Payment() {
     <div>
         <p className='text-3xl'>Place your payment here</p>
         <div class="hero h-auto mt-10 ">
-  <div class="hero-content flex-col ">
-    <div class="text-center lg:text-left w-80">
+  <div class="hero-content flex-col  ">
+    <div class="text-center lg:text-left w-80 ">
       <h1 class="text-3xl font-bold text-primary">Pay for {payItem.item_name}</h1>
       <p class="py-6">You have to pay ${payItem.orderPrice}</p>
     </div>

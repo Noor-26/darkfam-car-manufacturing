@@ -5,15 +5,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import OrderCard from './OrderCard';
 import Loading from '../../Shared/Loading/Loading';
 import RemoveOrder from './RemoveOrder';
-import { useNavigate } from 'react-router-dom';
 
 function Myorder() {
-  const [user] = useAuthState(auth)
+  const [user,loading] = useAuthState(auth)
   const {email} = user
   const [orderId,setOrderId] = useState('')
-  const navigate = useNavigate()
   const [orders,setorder] = useState([])
- 
   const [open, setOpen] = useState(false)
    useEffect(() => {
     fetch(`https://fast-springs-91080.herokuapp.com/order?email=${email}`,{
@@ -21,12 +18,11 @@ function Myorder() {
     headers:{
         'content-type':'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    
     },
+
 }).then(res =>  res.json() ).then(data=>setorder(data))
    }, [orders,orderId])
    
-
   const removeOrder = () => {
     fetch(`https://fast-springs-91080.herokuapp.com/order/${orderId}`,
           {
@@ -43,12 +39,13 @@ function Myorder() {
   setOpen(false)
    }
    
+   if(loading){
+     return <Loading/>
+   }
   return (
     <div> 
-   
     <div>
         <p className='text-2xl my-3'> Manage Orders  </p>
-
         <div class="overflow-x-auto">
   <table class="table w-full">
     

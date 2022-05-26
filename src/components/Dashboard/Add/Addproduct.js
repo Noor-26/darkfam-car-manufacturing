@@ -1,7 +1,6 @@
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import {toast} from 'react-toastify'
@@ -26,15 +25,16 @@ function Addproduct() {
       headers:{
           'content-type':'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        
       },
+
       body: JSON.stringify(product)
+      
   }).then(res => res.json()).then(datas =>{
     toast.success("adding product done")
   })
   reset()
- 
   }
+
   if(loading){
     return <Loading/>
   }
@@ -42,7 +42,6 @@ function Addproduct() {
   return (
     <div>
         <p className='text-3xl'>Add product</p>
-
         <div className='flex flex-col justify-center mx-auto'>
     <form onSubmit={handleSubmit(onSubmit)} className="text-center flex flex-col  mx-auto">
   
@@ -56,7 +55,7 @@ function Addproduct() {
   <textarea type="text" placeholder="Enter product description" cols="30" rows="10" className="input input-bordered w-80 mt-5 h-24" {...register("description")} />
                       
   <br/>
-  <input type="submit" value="update"   className='btn btn-primary text-white  max-w-xs my-5 ' />
+  <input type="submit" value="Add Product"   className='btn btn-primary text-white  max-w-xs my-5 ' />
 </form>
   </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function OrderCard({order,index,setOpen,setOrderId}) {
-    const {name,email,orderPrice,order_quantity,item_name,_id,paid,transactionId} = order
+    const {orderPrice,order_quantity,item_name,_id,paid,transactionId} = order
     const sendId = () => {
       setOpen(true)
       setOrderId(_id)

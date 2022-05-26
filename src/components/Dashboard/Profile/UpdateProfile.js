@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 function UpdateProfile() {
     const [user] = useAuthState(auth)
+    const navigate = useNavigate()
     const [profileUser, setProfileUser] = useState([])
     const {education,location,number,linkdin} = profileUser
   const { register, handleSubmit } = useForm();
@@ -29,7 +31,6 @@ function UpdateProfile() {
    }, [education,location,number,linkdin])
   
    useEffect(() => {
-     console.log(user)
      fetch(`https://fast-springs-91080.herokuapp.com/user?email=${user.email}`,{
        method: 'GET',
          headers:{
@@ -40,7 +41,6 @@ function UpdateProfile() {
      })
      .then(res => res.json())
      .then(data => setProfileUser(data))
-   console.log(user)
    }, [user])
   const onSubmit = (data) => {
 
@@ -61,7 +61,12 @@ function UpdateProfile() {
 
       },
       body: JSON.stringify(Updateuser)
-  }).then(res => res.json()).then(data => toast.success('Updating your profile done!'))
+  }).then(res => res.json()).then(data =>{
+    if(data.acknowledged){
+      navigate('/dashboard')
+    }
+     toast.success('Updating your profile done!')
+    })
 
   }
   return (
