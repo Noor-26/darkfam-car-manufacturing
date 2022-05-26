@@ -14,7 +14,7 @@ function OrderCard({order,index,setOpen,setOrderId}) {
     <td>${orderPrice}</td>
     <td>{order_quantity}</td>
     <td>{!paid ? <Link to={`/dashboard/payment/${_id}`} className="btn btn-primary btn-xs">pay</Link>: <p>paid</p>}</td>
-    <td><label for="manage_order" class="btn  btn-xs btn-primary modal-button" onClick={sendId}>Cancel</label></td>
+    <td>{!paid && <label for="manage_order" class="btn  btn-xs btn-primary modal-button" onClick={sendId}>Cancel</label>}</td>
     <td>{transactionId ? transactionId : "Not paid yet"}</td>
 
   </tr>

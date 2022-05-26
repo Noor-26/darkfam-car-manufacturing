@@ -6,8 +6,18 @@
 body{
   font-family: 'Poppins', sans-serif;
 }
+/* for navber heading */
 .navber-text{
   font-family: 'Satisfy', cursive;
+}
+/* custom btn design */
+.btn-primary{
+  letter-spacing: 1px;
+  border: 2px solid #ea1b25;
+}
+.btn-primary:hover{
+  background-color: white;
+  color: #ea1b25;
 }
 .App {
   text-align: center;

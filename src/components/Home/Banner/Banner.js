@@ -1,11 +1,11 @@
 import React from 'react'
-import './Banner.css'
 import bgImg from '../../../images/banner.png'
-function Banner() {
+    
+function Banner() { 
     
   return (
 <div className=' min-h-screen flex'>
-    <div>
+    <div> 
         <img src={bgImg} alt="a black car" className='absolute banner-img min-h-screen' />
     </div>
     <div>
@@ -14,7 +14,7 @@ function Banner() {
     <div class="max-w-md">
       <h1 class="text-4xl font-bold">Best Car Tools For You</h1>
       <p class="py-6">Keeping your car in good condition does more than just prevent some issues, it also helps keep your vehicle running smoothly and extend its lifespan. </p>
-      <button class="btn btn-primary font-bold text-white">Get Started</button>
+      <button class="btn btn-primary text-white tracking-[1px]"><a href="#tools">Get started</a></button>
     </div>
   </div>
 </div>

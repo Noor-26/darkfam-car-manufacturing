@@ -1,5 +1,6 @@
 import  { useState } from 'react'
 import { useQuery } from 'react-query'
+import { toast } from 'react-toastify';
 import Loading from '../Shared/Loading/Loading';
 import RemoveProduct from './Deletes/RemoveProduct';
 import ManageallProductCard from './ManageallProductCard';
@@ -25,6 +26,7 @@ function Manageallproducts() {
           })
           .then(res => res.json())
           .then(data => {
+            toast.success('removed product done')
               refetch()
           })
   setOpen(false)

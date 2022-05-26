@@ -16,7 +16,7 @@ function Home() {
     <BussnessSummary/>
     {/* extra parts */}
     <Sale/>
-    <OfficeContact/>
+    <OfficeContact/> 
     <Parthners/>
     </div>
   )

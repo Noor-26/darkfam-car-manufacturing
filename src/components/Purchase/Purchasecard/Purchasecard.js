@@ -9,10 +9,10 @@ function Purchasecard({purchaseItem}) {
     const [user] = useAuthState(auth)
     const { register, handleSubmit } = useForm();
     const [purchase,setpurchase] = useState(true)
-    const [orderValue,setOrdervalue] = useState(minimum_quantity || 0)
+    const [orderValue,setOrdervalue] = useState(0)
    
     
-    useEffect(() => {
+    useEffect(() => { 
 
       if(minimum_quantity){
         setOrdervalue(minimum_quantity) 
@@ -39,11 +39,11 @@ useEffect(() => {
     }
 
     if(orderValue < minimum_quantity   ){
-       toast(`you can'order below ${minimum_quantity}`)
+       toast.error(`you can'order below ${minimum_quantity}`)
        setpurchase(false)
     }
     else if(orderValue > avaliable_quantity){
-      toast(`you can't order higher than ${avaliable_quantity}`)
+      toast.error(`you can't order higher than ${avaliable_quantity}`)
       setpurchase(false)
     }
     else{

@@ -3,7 +3,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-
+import Loading from '../Shared/Loading/Loading';
+import {toast} from 'react-toastify'
 function Addproduct() {
   const [user,loading] = useAuthState(auth)
   const { register, handleSubmit,reset  } = useForm();
@@ -28,8 +29,14 @@ function Addproduct() {
         
       },
       body: JSON.stringify(product)
-  }).then(res => res.json()).then(data =>console.log(data))
+  }).then(res => res.json()).then(datas =>{
+    toast.success("adding product done")
+  })
+  reset()
  
+  }
+  if(loading){
+    return <Loading/>
   }
 
   return (

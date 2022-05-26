@@ -24,7 +24,7 @@ function Addreview() {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(review)
-  }).then(res => res.json()).then(data => toast.success('Thnx for the review review'))
+  }).then(res => res.json()).then(data => toast.success('Thnx for the review'))
  
   }
 

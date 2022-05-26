@@ -7,11 +7,12 @@ import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import './MyProfile.css'
+import UpdateProfile from './UpdateProfile';
 
 function Myprofile() {
   const [user] = useAuthState(auth)
+  const {displayName,email,photoURL} = user
   const [profileUser, setProfileUser] = useState([])
- const {displayName,email,photoURL} = user
   
   useEffect(() => {
     console.log(user)
@@ -54,7 +55,7 @@ function Myprofile() {
 </div> 
   </div>
    
-    
+
 
     </div>
   )

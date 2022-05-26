@@ -80,7 +80,7 @@ function CheckoutForm({payItem}) {
         },
         body:JSON.stringify(payment)
         }).then(res=>res.json()).then(data => 
-        console.log(data)
+        event.reset()
         )
       }
     }

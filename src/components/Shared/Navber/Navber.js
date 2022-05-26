@@ -3,10 +3,13 @@ import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
 import auth from '../../../firebase.init'
+import Loading from '../Loading/Loading'
 
 function Navber() {
-  const [user] = useAuthState(auth)
-  // fixed top-0
+  const [user,loading] = useAuthState(auth)
+  if(loading){
+    return <Loading/>
+  }
   return (
     <div class="navbar bg-white z-10 ">
   <div class="navbar-start ">
@@ -28,8 +31,8 @@ function Navber() {
      }
       </ul>
     </div>
-    <a class="btn btn-ghost normal-case text-xl navber-text">Darkfam-car-manufacturer</a>
-  </div>
+    <Link to="/" class="btn btn-ghost normal-case text-xl navber-text">Darkfam-car-manufacturer</Link>
+  </div> 
   <div class="navbar-end">
   <div class="navbar-center hidden lg:flex font-bold">
     <ul class="menu menu-horizontal p-0">
@@ -38,8 +41,8 @@ function Navber() {
       <li><Link to='/portfolio'>My Portfolio</Link></li>
      {user ? <>
       <li><Link to='/dashboard'>Dashboard</Link></li> 
-      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
-      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
+      <button className='btn btn-ghost font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
+      <button className='btn btn-ghost font-bold' onClick={() => signOut(auth)}>Signout</button>
      </>  :  
      <li><Link to='/login'>Login</Link></li> 
      }
