@@ -4,8 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
-import auth from '../../firebase.init';
-import Loading from '../Shared/Loading/Loading';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import './MyProfile.css'
 import UpdateProfile from './UpdateProfile';
 
@@ -16,7 +16,7 @@ function Myprofile() {
   
   useEffect(() => {
     console.log(user)
-    fetch(`http://localhost:5000/user?email=${email}`,{
+    fetch(`https://fast-springs-91080.herokuapp.com/user?email=${email}`,{
       method: 'GET',
         headers:{
             'content-type':'application/json',

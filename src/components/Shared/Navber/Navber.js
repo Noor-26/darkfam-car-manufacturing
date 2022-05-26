@@ -24,8 +24,8 @@ function Navber() {
       <li><Link to='/portfolio'>My Portfolio</Link></li>
      {user ? <>
       <li><Link to='/dashboard'>Dashboard</Link></li> 
-      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
-      <button className='btn btn-ghost btn-primary font-bold' onClick={() => signOut(auth)}>Signout</button>
+      <button className='btn btn-ghost font-bold' onClick={() => signOut(auth)}>{user?.displayName}</button>
+      <button className='btn btn-ghost font-bold' onClick={() => signOut(auth)}>Signout</button>
      </>  :  
      <li><Link to='/login'>Login</Link></li> 
      }
@@ -48,6 +48,11 @@ function Navber() {
      }
     </ul>
   </div>
+  </div>
+  <div className="ml-auto">
+  <label tabIndex="1" for="dashboard_drawer" className="btn btn-ghost bg-base-100 lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
   </div>
 </div>
   )

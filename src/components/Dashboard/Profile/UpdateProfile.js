@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 function UpdateProfile() {
     const [user] = useAuthState(auth)
     const [profileUser, setProfileUser] = useState([])
@@ -30,7 +30,7 @@ function UpdateProfile() {
   
    useEffect(() => {
      console.log(user)
-     fetch(`http://localhost:5000/user?email=${user.email}`,{
+     fetch(`https://fast-springs-91080.herokuapp.com/user?email=${user.email}`,{
        method: 'GET',
          headers:{
              'content-type':'application/json',
@@ -53,7 +53,7 @@ function UpdateProfile() {
       linkdin: data.link_profile
     }
 
-     fetch(`http://localhost:5000/user/${user.email}`,{
+     fetch(`https://fast-springs-91080.herokuapp.com/user/${user.email}`,{
       method: 'PUT',
       headers:{
           'content-type':'application/json', 

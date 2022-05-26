@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import auth from '../../firebase.init'
+import auth from '../../../firebase.init'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import OrderCard from './OrderCard';
-import Loading from '../Shared/Loading/Loading';
+import Loading from '../../Shared/Loading/Loading';
 import RemoveOrder from './RemoveOrder';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ function Myorder() {
  
   const [open, setOpen] = useState(false)
    useEffect(() => {
-    fetch(`http://localhost:5000/order?email=${email}`,{
+    fetch(`https://fast-springs-91080.herokuapp.com/order?email=${email}`,{
     method: 'GET',
     headers:{
         'content-type':'application/json',
@@ -24,11 +24,11 @@ function Myorder() {
     
     },
 }).then(res =>  res.json() ).then(data=>setorder(data))
-   }, [])
+   }, [orders,orderId])
    
 
   const removeOrder = () => {
-    fetch(`http://localhost:5000/order/${orderId}`,
+    fetch(`https://fast-springs-91080.herokuapp.com/order/${orderId}`,
           {
               method:'DELETE',
               headers:{

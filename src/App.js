@@ -12,18 +12,20 @@ import Purchase from './components/Purchase/Purchase';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './components/Dashboard/Dashboard';
-import Myorder from './components/Dashboard/Myorder';
-import Addreview from './components/Dashboard/Addreview';
-import Myprofile from './components/Dashboard/Myprofile';
-import UpdateProfile from './components/Dashboard/UpdateProfile';
-import Manageallproducts from './components/Dashboard/Manageallproducts';
-import Addproduct from './components/Dashboard/Addproduct';
-import Manageorders from './components/Dashboard/Manageorders';
-import Makeadmin from './components/Dashboard/Makeadmin';
+
 import Notfound from './components/Notfound/Notfound';
-import Payment from './components/Dashboard/Payment';
+import Myprofile from './components/Dashboard/Profile/Myprofile';
+import Myorder from './components/Dashboard/Orders/Myorder';
+import UpdateProfile from './components/Dashboard/Profile/UpdateProfile';
+import Payment from './components/Dashboard/Payment/Payment';
+import Addreview from './components/Dashboard/Add/Addreview';
 import Portfollio from './components/Portfollio/Portfollio';
 import RequireAdmin from './components/Shared/RequireAdmin/RequireAdmin';
+import Makeadmin from './components/Dashboard/Admin/Makeadmin';
+import Addproduct from './components/Dashboard/Add/Addproduct';
+import Manageorders from './components/Dashboard/Orders/Manageorders';
+import Manageallproducts from './components/Dashboard/ManageProduct/Manageallproducts';
+
   
 
 function App() {

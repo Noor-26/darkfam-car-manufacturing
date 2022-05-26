@@ -1,9 +1,9 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import Loading from '../Shared/Loading/Loading'
+import Loading from '../../Shared/Loading/Loading'
 
 function Manageorders() {
-  const {data,isLoading,refetch} = useQuery('order_data',() => fetch('http://localhost:5000/orders',{
+  const {data,isLoading,refetch} = useQuery('order_data',() => fetch('https://fast-springs-91080.herokuapp.com/orders',{
     method: 'GET',
         headers:{
             'content-type':'application/json',
@@ -17,7 +17,7 @@ return <Loading/>
 
  const statusChange = (itemId) => {
   if(itemId){
-   fetch(`http://localhost:5000/order/${itemId}`,{
+   fetch(`https://fast-springs-91080.herokuapp.com/order/${itemId}`,{
     method:'PATCH',
     headers:{
       'content-type':'application/json',
@@ -55,7 +55,6 @@ return <Loading/>
          <td>{!product.paid ? <p>unpaid</p>:<button class="btn btn-xs btn-primary" onClick={() => statusChange(product._id)}>{product.status}</button>}</td>
        </tr>)
      }
-     {/* <button class="btn btn-xs btn-primary "> unpaid</button> */}
     </tbody>
   </table>
 </div>

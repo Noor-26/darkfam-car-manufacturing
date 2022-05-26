@@ -4,7 +4,7 @@ import Toolscard from './Toolscard/Toolscard'
 function Tools() {
     const [tools, setTools] = useState([])
     useEffect(() => {
-      fetch('http://localhost:5000/item').then(res => res.json())
+      fetch('https://fast-springs-91080.herokuapp.com/item').then(res => res.json())
       .then(data => setTools(data))
     }, [tools])
     

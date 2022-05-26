@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
-import Loading from '../Shared/Loading/Loading'
+import Loading from '../../Shared/Loading/Loading'
 import MakeAdminCard from './MakeAdminCard';
 
 function Makeadmin() {
 
-   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('http://localhost:5000/users',{
+   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('https://fast-springs-91080.herokuapp.com/users',{
     method: 'GET',
     headers:{
         'content-type':'application/json',

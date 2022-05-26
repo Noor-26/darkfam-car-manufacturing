@@ -7,7 +7,7 @@ function Purchase() {
     const [purchaseItem, setpurchaseItem] = useState([])
     const {name,img,description,minimum_quantity,price,avaliable_quantity} = purchaseItem
     useEffect(() => {
-      fetch(`http://localhost:5000/item/${id}`,{
+      fetch(`https://fast-springs-91080.herokuapp.com/item/${id}`,{
         method: 'GET',
         headers:{
             'content-type':'application/json',

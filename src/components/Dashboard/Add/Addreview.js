@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 
 function Addreview() {
   const { register, handleSubmit } = useForm();
@@ -16,7 +16,7 @@ function Addreview() {
       review:data.review,
       ratings: data.ratings
     }
-     fetch('http://localhost:5000/review',{
+     fetch('https://fast-springs-91080.herokuapp.com/review',{
       method: 'POST',
       headers:{
           'content-type':'application/json', 

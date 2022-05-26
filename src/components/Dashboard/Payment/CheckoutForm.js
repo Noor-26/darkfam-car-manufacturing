@@ -1,15 +1,17 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import Loading from '../../Shared/Loading/Loading';
 
 function CheckoutForm({payItem}) {
     const [clientSecret, setClientSecret] = useState("");
+    const [loading, setLoading] = useState(false);
     const {orderPrice,email,name,_id} = payItem
   useEffect(() => {
 
    if(orderPrice){
 
-     fetch("http://localhost:5000/create-payment-intent", {
+     fetch("https://fast-springs-91080.herokuapp.com/create-payment-intent", {
        method: "POST",
        headers: { 
            "content-Type": "application/json",
@@ -26,9 +28,11 @@ function CheckoutForm({payItem}) {
 
     const stripe= useStripe()
     const elements = useElements()
+   
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setLoading(true)
         if (!stripe || !elements) {
             return;
           }
@@ -70,19 +74,25 @@ function CheckoutForm({payItem}) {
         }
 
 
-        toast.success('payment successfull')
-        fetch(`http://localhost:5000/payment/${_id}`,{
+        fetch(`https://fast-springs-91080.herokuapp.com/payment/${_id}`,{
           method:'PATCH',
           headers:{
             'content-type':'application/json',
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        
-        },
-        body:JSON.stringify(payment)
-        }).then(res=>res.json()).then(data => 
-        event.reset()
+            
+          },
+          body:JSON.stringify(payment)
+        }).then(res=>res.json()).then(data => {
+          setLoading(false)
+          event.reset()
+          toast.success('payment successfull')
+
+        }
         )
       }
+    }
+    if(loading){
+      return <Loading/>
     }
   return (
     <form onSubmit={handleSubmit}>

@@ -10,7 +10,7 @@ function Salecard({sale}) {
     <p className='text-2xl text-white'>{part}</p>
     <p className='text-2xl text-white'>{discount}% off</p>
     <div class="card-actions justify-start">
-      <button class="btn sale-btn text-white "><a href='#'>Shop now</a></button>
+      <button class="btn sale-btn text-white "><a href="#tools">Shop now</a></button>
     </div>
   </div>
 </div>

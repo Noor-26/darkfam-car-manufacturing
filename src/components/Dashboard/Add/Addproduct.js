@@ -2,8 +2,8 @@ import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import auth from '../../firebase.init';
-import Loading from '../Shared/Loading/Loading';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import {toast} from 'react-toastify'
 function Addproduct() {
   const [user,loading] = useAuthState(auth)
@@ -21,7 +21,7 @@ function Addproduct() {
       description:data.description
     }
 
-     fetch('http://localhost:5000/items',{
+     fetch('https://fast-springs-91080.herokuapp.com/items',{
       method: 'POST',
       headers:{
           'content-type':'application/json',

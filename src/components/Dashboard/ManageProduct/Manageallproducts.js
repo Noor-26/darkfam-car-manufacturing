@@ -1,21 +1,29 @@
 import  { useState } from 'react'
 import { useQuery } from 'react-query'
 import { toast } from 'react-toastify';
-import Loading from '../Shared/Loading/Loading';
-import RemoveProduct from './Deletes/RemoveProduct';
+import Loading from '../../Shared/Loading/Loading';
+import RemoveProduct from './RemoveProduct';
 import ManageallProductCard from './ManageallProductCard';
 
 function Manageallproducts() {
   const [open, setOpen] = useState(false)
   const [productId, setProductId] = useState("")
-  const {data,isLoading,refetch} = useQuery('product_data',() => fetch('http://localhost:5000/items').then(res => res.json()))
+  const {data,isLoading,refetch} = useQuery('product_data',() => fetch('https://fast-springs-91080.herokuapp.com/items',{
+    
+      method:'GET',
+headers:{
+    'content-type':'application/json',
+    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+
+},
+  }).then(res => res.json()))
 
   if(isLoading){ 
     return <Loading/>   
   }
 
   const removeProduct = () => {
-    fetch(`http://localhost:5000/items/${productId}`,
+    fetch(`https://fast-springs-91080.herokuapp.com/items/${productId}`,
           {
               method:'DELETE',
         headers:{
@@ -49,7 +57,7 @@ function Manageallproducts() {
     </thead>
     <tbody>
      {
-         data.map((product,index) => <ManageallProductCard product={product} index={index} setOpen={setOpen}  setProductId={setProductId}/>)
+         data?.map((product,index) => <ManageallProductCard product={product} index={index} setOpen={setOpen}  setProductId={setProductId}/>)
      }
      
     </tbody>

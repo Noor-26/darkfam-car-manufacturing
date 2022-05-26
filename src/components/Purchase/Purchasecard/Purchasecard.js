@@ -7,7 +7,7 @@ import { toast} from 'react-toastify';
 function Purchasecard({purchaseItem}) {
     const {minimum_quantity,avaliable_quantity,price} = purchaseItem
     const [user] = useAuthState(auth)
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit ,reset} = useForm();
     const [purchase,setpurchase] = useState(true)
     const [orderValue,setOrdervalue] = useState(0)
    
@@ -48,7 +48,7 @@ useEffect(() => {
     }
     else{
       // sending order data to server
-      fetch('http://localhost:5000/order',{
+      fetch('https://fast-springs-91080.herokuapp.com/order',{
         method: 'POST',
         headers:{
             'content-type':'application/json', 
@@ -56,7 +56,11 @@ useEffect(() => {
 
         },
         body: JSON.stringify(order)
-    }).then(res => res.json()).then(data => toast.success('Your purchase is successfull'))
+    }).then(res => res.json()).then(data => {
+      toast.success('Your purchase is successfull')
+    reset()
+    })
+
 }
     
   };
