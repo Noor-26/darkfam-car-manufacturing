@@ -4,25 +4,29 @@ import { toast } from 'react-toastify'
 
 function CheckoutForm({payItem}) {
     const [clientSecret, setClientSecret] = useState("");
-    const {orderPrice} = payItem
-  // useEffect(() => {
+    const {orderPrice,email,name,_id} = payItem
+  useEffect(() => {
 
-  //   fetch("http://localhost:5000/create-payment-intent", {
-  //     method: "POST",
-  //     headers: { 
-  //         "Content-Type": "application/json",
-  //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-  //        },
+   if(orderPrice){
 
-  //     body: JSON.stringify({orderPrice}),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setClientSecret(data.clientSecret));
+     fetch("http://localhost:5000/create-payment-intent", {
+       method: "POST",
+       headers: { 
+           "content-Type": "application/json",
+           'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+          },
+ 
+       body: JSON.stringify({orderPrice}),
+     })
+       .then((res) => res.json())
+       .then((data) => setClientSecret(data.clientSecret));
+   }
 
-  // }, [orderPrice]);
+  }, [orderPrice]);
 
     const stripe= useStripe()
     const elements = useElements()
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         if (!stripe || !elements) {
@@ -40,8 +44,44 @@ function CheckoutForm({payItem}) {
   
       if (error) {
         toast.error(error?.message)
-      } else {
-       toast.success('Your payment is success')
+      }
+
+      // confirming card payment
+      const {paymentIntent, error:paymentError} = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: name,
+              email:email
+            },
+          },
+        },
+      );
+      if(paymentError){
+        toast.error(paymentError.message)
+      }
+      else{
+
+        const payment = {
+          order:_id,
+          transactionId:paymentIntent.id
+        }
+
+
+        toast.success('payment successfull')
+        fetch(`http://localhost:5000/payment/${_id}`,{
+          method:'PATCH',
+          headers:{
+            'content-type':'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        
+        },
+        body:JSON.stringify(payment)
+        }).then(res=>res.json()).then(data => 
+        console.log(data)
+        )
       }
     }
   return (

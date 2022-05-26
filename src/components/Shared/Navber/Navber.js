@@ -28,7 +28,7 @@ function Navber() {
      }
       </ul>
     </div>
-    <a class="btn btn-ghost normal-case text-xl">Darkfam-car-manufacturer</a>
+    <a class="btn btn-ghost normal-case text-xl navber-text">Darkfam-car-manufacturer</a>
   </div>
   <div class="navbar-end">
   <div class="navbar-center hidden lg:flex font-bold">

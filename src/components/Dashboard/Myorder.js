@@ -60,6 +60,7 @@ function Myorder() {
         <th>Quantity</th>
         <th>Payment</th>
         <th>Action</th>
+        <th>TransictionId</th>
       </tr>
     </thead>
     <tbody>

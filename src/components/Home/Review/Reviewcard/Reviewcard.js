@@ -7,7 +7,7 @@ function Reviewcard({reviews}) {
   return (
     <div class="card w-80 bg-base-100">
   <div class="card-body items-center text-center">
-    <h2 class="card-title">{name}</h2>
+    <h2 class="card-title text-primary">{name}</h2>
     <p className='flex'> ratings : {ratings} <BsFillStarFill className='mt-1 ml-1'/> </p>
     <p>{review}</p>
     

@@ -8,7 +8,24 @@ import Loading from '../Shared/Loading/Loading';
 function UpdateProfile() {
     const [user,loading] = useAuthState(auth)
   const { register, handleSubmit } = useForm();
+  const [profileUser, setProfileUser] = useState([])
   const navigate = useNavigate()
+
+   
+  useEffect(() => {
+    console.log(user)
+    fetch(`http://localhost:5000/user?email=${user.email}`,{
+      method: 'GET',
+        headers:{
+            'content-type':'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        
+        },
+    })
+    .then(res => res.json())
+    .then(data => setProfileUser(data))
+  console.log(user)
+  }, [user])
   
   const onSubmit = (data) => {
       console.log(user)
@@ -45,7 +62,7 @@ function UpdateProfile() {
   
   <input type="text"  className="input input-bordered w-80 mt-5" {...register("name")} value={user?.displayName} disabled />
   <input type="email" className="input input-bordered w-80 mt-5" {...register("email")} value={user.email} disabled />
-  <input type="text" className="input input-bordered w-80 mt-5" {...register("edu")} placeholder="Enter your education"  />
+  <input type="text" className="input input-bordered w-80 mt-5" {...register("edu")} placeholder="Enter your education" value={profileUser.education}  />
   <input type="text" className="input input-bordered w-80 mt-5" {...register("locate")} placeholder="Enter your location" />
   <input type="number" className="input input-bordered w-80 mt-5" {...register("number")}  placeholder="Enter your phone number"/>
   <input type="text" className="input input-bordered w-80 mt-5" {...register("link_profile")}  placeholder="Enter your linkdin profile link"/>

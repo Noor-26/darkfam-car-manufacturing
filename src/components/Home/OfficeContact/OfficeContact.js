@@ -20,7 +20,7 @@ function OfficeContact() {
             <p>NY 10018 Dhaka</p>
             </div>
           </div>
-          <div className='flex '>
+          <div className='flex mt-5 '>
             <p className='text-2xl mr-1 mt-2'><MdPhonePaused/></p>
             <div>
             <p className='text-2xl font-bold'>+880 163140546</p>

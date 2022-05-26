@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import Loading from '../Shared/Loading/Loading'
 
 function Manageorders() {
-  const {data,isLoading} = useQuery('order_data',() => fetch('http://localhost:5000/orders',{
+  const {data,isLoading,refetch} = useQuery('order_data',() => fetch('http://localhost:5000/orders',{
     method: 'GET',
         headers:{
             'content-type':'application/json',
@@ -14,6 +14,20 @@ function Manageorders() {
  if(isLoading){
 return <Loading/>
  }
+
+ const statusChange = (itemId) => {
+  if(itemId){
+   fetch(`http://localhost:5000/order/${itemId}`,{
+    method:'PATCH',
+    headers:{
+      'content-type':'application/json',
+      'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+  
+  },
+   }).then(res=>res.json()).then(data => refetch() )
+  }
+ }
+
   return (
     <div>
       <p className='text-3xl my-5'>manage orders</p>
@@ -27,7 +41,7 @@ return <Loading/>
         <th>Product name</th>
         <th>Price</th>
         <th>Quantity</th>
-        <th>Action</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -38,10 +52,10 @@ return <Loading/>
   <td>{product.name}</td>
   <td>${product.orderPrice}</td>
   <td>{product.order_quantity}</td>
-         <td><button class="btn btn-xs btn-primary "> unpaid</button></td>
+         <td>{!product.paid ? <p>unpaid</p>:<button class="btn btn-xs btn-primary" onClick={() => statusChange(product._id)}>{product.status}</button>}</td>
        </tr>)
      }
-     
+     {/* <button class="btn btn-xs btn-primary "> unpaid</button> */}
     </tbody>
   </table>
 </div>

@@ -10,7 +10,7 @@ import './MyProfile.css'
 
 function Myprofile() {
   const [user] = useAuthState(auth)
-  const [profileUser, setUser] = useState([])
+  const [profileUser, setProfileUser] = useState([])
  const {displayName,email,photoURL} = user
   
   useEffect(() => {
@@ -24,7 +24,7 @@ function Myprofile() {
         },
     })
     .then(res => res.json())
-    .then(data => setUser(data))
+    .then(data => setProfileUser(data))
   console.log(user)
   }, [user])
   

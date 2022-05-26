@@ -7,16 +7,16 @@ const stripePromise = loadStripe('pk_test_51L26U9AgMm9RRJ7pUcXRrqvzh1l97MSE67ouq
 function Payment() {
     const{_id} = useParams()
     const [payItem, setpayItem] = useState([])
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/payment/${_id}`,{
-    //         method: 'GET',
-    //         headers:{
-    //             'content-type':'application/json',
-    //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+    useEffect(() => {
+        fetch(`http://localhost:5000/payment/${_id}`,{
+            method: 'GET',
+            headers:{
+                'content-type':'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             
-    //         },
-    // }).then(res=>res.json()).then(data => setpayItem(data))
-    // }, [])
+            },
+    }).then(res=>res.json()).then(data => setpayItem(data))
+    }, [])
     
    
   return (

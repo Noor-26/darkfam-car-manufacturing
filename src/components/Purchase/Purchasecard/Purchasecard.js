@@ -56,14 +56,13 @@ useEffect(() => {
 
         },
         body: JSON.stringify(order)
-    }).then(res => res.json()).then(data => toast('success'))
+    }).then(res => res.json()).then(data => toast.success('Your purchase is successfull'))
 }
     
-
   };
   return (
     <div>
-           <form onSubmit={handleSubmit(onSubmit)} className="text-center">
+           <form onSubmit={handleSubmit(onSubmit)} className="text-center flex flex-col">
     
       <input type="text"  className="input input-bordered w-full max-w-xs mt-5" {...register("name")} value={user.displayName} disabled />
       <input type="email" className="input input-bordered w-full max-w-xs mt-5" {...register("email")} value={user.email} disabled />

@@ -23,6 +23,7 @@ import Makeadmin from './components/Dashboard/Makeadmin';
 import Notfound from './components/Notfound/Notfound';
 import Payment from './components/Dashboard/Payment';
 import Portfollio from './components/Portfollio/Portfollio';
+import RequireAdmin from './components/Shared/RequireAdmin/RequireAdmin';
   
 
 function App() {
@@ -46,10 +47,10 @@ function App() {
        <Route path="myorder" element={<Myorder/>} />
        <Route path="payment/:_id" element={<Payment/>} />
        <Route path="updateprofile" element={<UpdateProfile/>} />
-       <Route path="manageproduct" element={<Manageallproducts/>} />
-       <Route path="addproduct" element={<Addproduct/>} />
-       <Route path="manageallorder" element={<Manageorders/>} />
-      <Route path="makeadmin" element={<Makeadmin/>} />
+       <Route path="manageproduct" element={<RequireAdmin><Manageallproducts/></RequireAdmin>} />
+       <Route path="addproduct" element={<RequireAdmin><Addproduct/></RequireAdmin>} />
+       <Route path="manageallorder" element={<RequireAdmin><Manageorders/></RequireAdmin>} />
+      <Route path="makeadmin" element={<RequireAdmin><Makeadmin/></RequireAdmin>} />
       </Route>
        
       <Route path="*" element={<Notfound/>} />
