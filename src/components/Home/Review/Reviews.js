@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import Reviewcard from './Reviewcard/Reviewcard';
 
 function Reviews() {
-  const {data:reviews,isLoading} = useQuery('review',() => fetch('https://fast-springs-91080.herokuapp.com/review').then(res => res.json()))
+  const {data:reviews,isLoading,refetch} = useQuery('review',() => fetch('https://fast-springs-91080.herokuapp.com/review').then(res => res.json()))
 
     if(isLoading){
       return <Loading/>
@@ -15,7 +15,7 @@ function Reviews() {
       <p className='text-3xl mt-10'>Reviews</p>
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 mx-auto justify-items-center mt-5'>
       {
-        reviews?.map(review => <Reviewcard reviews={review} />)
+        reviews?.map(review => <Reviewcard reviews={review} key={review._id} />)
       }
       </div>
         </div>
