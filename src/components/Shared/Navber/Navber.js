@@ -3,13 +3,10 @@ import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom'
 import auth from '../../../firebase.init'
-import Loading from '../Loading/Loading'
 
 function Navber() {
-  const [user,loading] = useAuthState(auth)
-  if(loading){
-    return <Loading/>
-  }
+  const [user] = useAuthState(auth)
+
   return (
     <div class="navbar bg-white z-10 ">
   <div class="navbar-start ">
