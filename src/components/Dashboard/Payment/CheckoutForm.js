@@ -9,7 +9,7 @@ function CheckoutForm({payItem}) {
 
    if(orderPrice){
 
-     fetch("https://fast-springs-91080.herokuapp.com/create-payment-intent", {
+     fetch("https://darkfam-car-manufacturing-server.onrender.com/create-payment-intent", {
        method: "POST",
        headers: { 
            "content-Type": "application/json",
@@ -71,7 +71,7 @@ function CheckoutForm({payItem}) {
         }
 
 
-        fetch(`https://fast-springs-91080.herokuapp.com/payment/${_id}`,{
+        fetch(`https://darkfam-car-manufacturing-server.onrender.com/payment/${_id}`,{
           method:'PATCH',
           headers:{
             'content-type':'application/json',

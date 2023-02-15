@@ -13,7 +13,7 @@ function Myorder() {
   const [orders,setorder] = useState([])
   const [open, setOpen] = useState(false)
    useEffect(() => {
-    fetch(`https://fast-springs-91080.herokuapp.com/order?email=${email}`,{
+    fetch(`https://darkfam-car-manufacturing-server.onrender.com/order?email=${email}`,{
     method: 'GET',
     headers:{
         'content-type':'application/json',
@@ -24,7 +24,7 @@ function Myorder() {
    }, [orders,orderId])
    
   const removeOrder = () => {
-    fetch(`https://fast-springs-91080.herokuapp.com/order/${orderId}`,
+    fetch(`https://darkfam-car-manufacturing-server.onrender.com/order/${orderId}`,
           {
               method:'DELETE',
               headers:{

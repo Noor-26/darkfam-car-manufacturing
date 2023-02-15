@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 function MakeAdminCard({person,index,refetch}) {
     const {name,email,role} = person
     const makeAdmin = () => {
-        fetch(`https://fast-springs-91080.herokuapp.com/user/admin/${email}`,{
+        fetch(`https://darkfam-car-manufacturing-server.onrender.com/user/admin/${email}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json',

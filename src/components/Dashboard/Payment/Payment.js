@@ -8,7 +8,7 @@ function Payment() {
     const{_id} = useParams()
     const [payItem, setpayItem] = useState([])
     useEffect(() => {
-        fetch(`https://fast-springs-91080.herokuapp.com/payment/${_id}`,{
+        fetch(`https://darkfam-car-manufacturing-server.onrender.com/payment/${_id}`,{
             method: 'GET',
             headers:{
                 'content-type':'application/json',

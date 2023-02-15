@@ -20,7 +20,7 @@ function Addproduct() {
       description:data.description
     }
 
-     fetch('https://fast-springs-91080.herokuapp.com/items',{
+     fetch('https://darkfam-car-manufacturing-server.onrender.com/items',{
       method: 'POST',
       headers:{
           'content-type':'application/json',

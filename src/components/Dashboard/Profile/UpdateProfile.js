@@ -31,7 +31,7 @@ function UpdateProfile() {
    }, [education,location,number,linkdin])
   
    useEffect(() => {
-     fetch(`https://fast-springs-91080.herokuapp.com/user?email=${user.email}`,{
+     fetch(`https://darkfam-car-manufacturing-server.onrender.com/user?email=${user.email}`,{
        method: 'GET',
          headers:{
              'content-type':'application/json',
@@ -53,7 +53,7 @@ function UpdateProfile() {
       linkdin: data.link_profile
     }
 
-     fetch(`https://fast-springs-91080.herokuapp.com/user/${user.email}`,{
+     fetch(`https://darkfam-car-manufacturing-server.onrender.com/user/${user.email}`,{
       method: 'PUT',
       headers:{
           'content-type':'application/json', 

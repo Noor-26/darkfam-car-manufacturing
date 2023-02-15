@@ -11,7 +11,7 @@ function useToken(user) {
         }
         if(email){
             localStorage.removeItem('accessToken')
-            fetch(`https://fast-springs-91080.herokuapp.com/users/${email}`,{
+            fetch(`https://darkfam-car-manufacturing-server.onrender.com/users/${email}`,{
                 method:'PUT',
                 headers:{
                 'content-type': "application/json",

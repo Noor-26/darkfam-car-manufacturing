@@ -8,7 +8,7 @@ import ManageallProductCard from './ManageallProductCard';
 function Manageallproducts() {
   const [open, setOpen] = useState(false)
   const [productId, setProductId] = useState("")
-  const {data,isLoading,refetch} = useQuery('product_data',() => fetch('https://fast-springs-91080.herokuapp.com/items',{
+  const {data,isLoading,refetch} = useQuery('product_data',() => fetch('https://darkfam-car-manufacturing-server.onrender.com/items',{
       method:'GET',
 headers:{
     'content-type':'application/json',
@@ -21,7 +21,7 @@ headers:{
   }
 
   const removeProduct = () => {
-    fetch(`https://fast-springs-91080.herokuapp.com/items/${productId}`,
+    fetch(`https://darkfam-car-manufacturing-server.onrender.com/items/${productId}`,
           {
               method:'DELETE',
         headers:{

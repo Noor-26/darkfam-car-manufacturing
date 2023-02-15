@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import Reviewcard from './Reviewcard/Reviewcard';
 
 function Reviews() {
-  const {data:reviews,isLoading,refetch} = useQuery('review',() => fetch('https://fast-springs-91080.herokuapp.com/review').then(res => res.json()))
+  const {data:reviews,isLoading,refetch} = useQuery('review',() => fetch('https://darkfam-car-manufacturing-server.onrender.com/review').then(res => res.json()))
 
     if(isLoading){
       return <Loading/>

@@ -48,7 +48,7 @@ useEffect(() => {
     }
     else{
       // sending order data to server
-      fetch('https://fast-springs-91080.herokuapp.com/order',{
+      fetch('https://darkfam-car-manufacturing-server.onrender.com/order',{
         method: 'POST',
         headers:{
             'content-type':'application/json', 

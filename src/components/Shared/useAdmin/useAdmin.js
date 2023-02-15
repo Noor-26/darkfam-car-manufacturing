@@ -6,7 +6,7 @@ function useAdmin(user) {
     useEffect(() => {
         const email = user?.email
         if(email){
-          fetch(`https://fast-springs-91080.herokuapp.com/admin/${email}`,{
+          fetch(`https://darkfam-car-manufacturing-server.onrender.com/admin/${email}`,{
               method:'GET',
               headers:{
                   'content-type': "application/json",

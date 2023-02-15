@@ -11,7 +11,7 @@ function Myprofile() {
   const [profileUser, setProfileUser] = useState([])
   
   useEffect(() => {
-    fetch(`https://fast-springs-91080.herokuapp.com/user?email=${email}`,{
+    fetch(`https://darkfam-car-manufacturing-server.onrender.com/user?email=${email}`,{
       method: 'GET',
         headers:{
             'content-type':'application/json',

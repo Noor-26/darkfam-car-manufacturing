@@ -5,12 +5,11 @@ import MakeAdminCard from './MakeAdminCard';
 
 function Makeadmin() {
 
-   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('https://fast-springs-91080.herokuapp.com/users',{
+   const {data:users,isLoading,refetch} = useQuery('Profile_data',() => fetch('https://darkfam-car-manufacturing-server.onrender.com/users',{
     method: 'GET',
     headers:{
         'content-type':'application/json',
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    
     },
    }).then(res => res.json()))
   

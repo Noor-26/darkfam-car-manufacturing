@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import Loading from '../../Shared/Loading/Loading'
 
 function Manageorders() {
-  const {data,isLoading,refetch} = useQuery('order_data',() => fetch('https://fast-springs-91080.herokuapp.com/orders',{
+  const {data,isLoading,refetch} = useQuery('order_data',() => fetch('https://darkfam-car-manufacturing-server.onrender.com/orders',{
     method: 'GET',
         headers:{
             'content-type':'application/json',
@@ -17,7 +17,7 @@ return <Loading/>
 
  const statusChange = (itemId) => {
   if(itemId){
-   fetch(`https://fast-springs-91080.herokuapp.com/order/${itemId}`,{
+   fetch(`https://darkfam-car-manufacturing-server.onrender.com/order/${itemId}`,{
     method:'PATCH',
     headers:{
       'content-type':'application/json',

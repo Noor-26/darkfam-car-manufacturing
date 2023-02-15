@@ -15,7 +15,7 @@ function Addreview() {
       review:data.review,
       ratings: data.ratings
     }
-     fetch('https://fast-springs-91080.herokuapp.com/review',{
+     fetch('https://darkfam-car-manufacturing-server.onrender.com/review',{
       method: 'POST',
       headers:{
           'content-type':'application/json', 
